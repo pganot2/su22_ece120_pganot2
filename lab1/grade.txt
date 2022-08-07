@@ -1,0 +1,2 @@
+File foo.txt was not updated: -2 points
+Total: 8/10
