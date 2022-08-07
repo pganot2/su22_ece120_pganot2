@@ -1,0 +1,8 @@
+QUESTION 1.  Read through the program lab6-1.bin. What do you expect the program to do? More specifically, which register will the program modify when it is run, and what will it contain when the program finishes? (You can probably figure this out merely by reading the comments provided in lab6-1.bin.)
+
+ANSWER: I expect the program to change some data in memory by changing the R2 register through the operations of AND and ADD. By the end of the program, the R2 register should finish with a value of the decimal number 12.
+
+
+QUESTION 2.  Explain in a few sentences why the ability to step through a program (run one instruction at a time) is a very useful tool for debugging a program. Debugging is the process of finding and correcting bugs (or errors) in a program. Hint: Finding a bug is often much more difficult than correcting it.
+
+ANSWER: The ability to step through a program is a very useful tool as going step-by-step can ensure that a specific line is free of errors. Running the whole program will simply tell us that there is a problem within the program, but it doesn't really tell us where. By stepping through, we can clear each line and single-out a specific part that is causing the issue.

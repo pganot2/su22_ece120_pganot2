@@ -1,0 +1,29 @@
+Question 1: Describe the errors that occur when trying to assemble lab11.asm. Identify the cause of each error.
+
+
+ANSWER:     As shown by the assembler, these are the errors.
+            14: illegal operands for missing opcode, Caused by lack of .ORIG pseudo-op.
+            16: instruction appears before .ORIG, Caused by lack of .ORIG pseudo-op.
+            17: constant outside of allowed range, 0x3010 did not have the intended value of -1 (wrong address).
+            19: illegal operands for ADD, Contained typo of an extra comma ',' for ADD operands.
+            30: constant outside of allowed range, We were using an address that did not have the intended value. 
+            32: label OUTERLOOP has already appeared, This error thinks that we are naming another label, but this is just caused by the typo of BRpz instead of BRzp.
+            42: no .END directive found, Caused by lack of .END pseudo-op.
+
+
+
+Question 2: For each label in the code, write down the corresponding memory location. 
+
+ANSWER:     OUTERLOOP  x3004
+            INNTERLOOP x3005
+            INPUT      x300E
+            ZERO       x300F             
+            NEGATIVE1  x3010             
+            RESULT     x3011               
+
+
+Question 3: Between using labels and explicit memory locations/offsets, which one makes the most sense, and why?
+
+ANSWER:     Labels make more sense as these are readable words, which automatically corresponds itself with a memory location.
+            If we were to keep track of the memory locations/offsets it would cause a lot of errors such as those that occurred
+            when we initially assembled the asm file. Using labels allows us to make less mistakes.
