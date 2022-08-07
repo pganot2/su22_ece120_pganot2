@@ -1,0 +1,11 @@
+vendor_name = ModelSim
+source_file = 1, /home/pganot2/ece120/lab3/lab3.bdf
+source_file = 1, /home/pganot2/ece120/lab3/Waveform.vwf
+source_file = 1, /home/pganot2/ece120/lab3/simulation/modelsim/Waveform.vwf
+source_file = 1, /home/pganot2/ece120/lab3/lab3assignment.bdf
+design_name = lab3
+instance = comp, \Sum~output\, Sum~output, lab3, 1
+instance = comp, \Cout~output\, Cout~output, lab3, 1
+instance = comp, \B~input\, B~input, lab3, 1
+instance = comp, \A~input\, A~input, lab3, 1
+instance = comp, \Cin~input\, Cin~input, lab3, 1

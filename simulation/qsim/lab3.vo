@@ -1,0 +1,184 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details, at
+// https://fpgasoftware.intel.com/eula.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 18.1.1 Build 263 12/14/2018 SJ Pro Edition"
+
+// DATE "06/30/2022 03:02:13"
+
+// 
+// Device: Altera 10CX220YF780I5G Package FBGA780
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module lab3 (
+	Sum,
+	Cout,
+	Cin,
+	A,
+	B);
+output 	Sum;
+output 	Cout;
+input 	Cin;
+input 	A;
+input 	B;
+
+// Design Ports Information
+// Sum	=>  Location: PIN_AB5,	 I/O Standard: 1.8 V,	 Current Strength: Default
+// Cout	=>  Location: PIN_AG3,	 I/O Standard: 1.8 V,	 Current Strength: Default
+// Cin	=>  Location: PIN_U8,	 I/O Standard: 1.8 V,	 Current Strength: Default
+// A	=>  Location: PIN_T7,	 I/O Standard: 1.8 V,	 Current Strength: Default
+// B	=>  Location: PIN_R5,	 I/O Standard: 1.8 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \Sum~pad_padout ;
+wire \Sum~padSIMOUT ;
+wire \Cout~pad_padout ;
+wire \Cout~padSIMOUT ;
+wire \Cin~pad_padout ;
+wire \A~pad_padout ;
+wire \B~pad_padout ;
+wire \~ALTERA_DATA0~~padout ;
+wire \~ALTERA_DATA0~~ibuf_o ;
+wire \B~input_o ;
+wire \A~input_o ;
+wire \Cin~input_o ;
+wire \inst1~combout ;
+wire \inst4~combout ;
+
+
+// Location: IOOBUF_X102_Y13_N48
+cyclone10gx_io_obuf \Sum~output (
+	.i(\inst1~combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(Sum),
+	.obar());
+defparam \Sum~output .bus_hold = "false";
+defparam \Sum~output .open_drain_output = "false";
+defparam \Sum~output .shift_series_termination_control = "false";
+
+// Location: IOOBUF_X102_Y6_N33
+cyclone10gx_io_obuf \Cout~output (
+	.i(\inst4~combout ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(Cout),
+	.obar());
+defparam \Cout~output .bus_hold = "false";
+defparam \Cout~output .open_drain_output = "false";
+defparam \Cout~output .shift_series_termination_control = "false";
+
+// Location: IOIBUF_X102_Y38_N62
+cyclone10gx_io_ibuf \B~input (
+	.i(B),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(\B~input_o ));
+defparam \B~input .bus_hold = "false";
+defparam \B~input .simulate_z_as = "z";
+
+// Location: IOIBUF_X102_Y40_N62
+cyclone10gx_io_ibuf \A~input (
+	.i(A),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(\A~input_o ));
+defparam \A~input .bus_hold = "false";
+defparam \A~input .simulate_z_as = "z";
+
+// Location: IOIBUF_X102_Y33_N62
+cyclone10gx_io_ibuf \Cin~input (
+	.i(Cin),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.o(\Cin~input_o ));
+defparam \Cin~input .bus_hold = "false";
+defparam \Cin~input .simulate_z_as = "z";
+
+// Location: LABCELL_X101_Y53_N27
+cyclone10gx_lcell_comb inst1(
+// Equation(s):
+// \inst1~combout  = ( \Cin~input_o  & ( !\B~input_o  $ (\A~input_o ) ) ) # ( !\Cin~input_o  & ( !\B~input_o  $ (!\A~input_o ) ) )
+
+	.dataa(!\B~input_o ),
+	.datab(gnd),
+	.datac(!\A~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\Cin~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\inst1~combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+defparam inst1.extended_lut = "off";
+defparam inst1.lut_mask = 64'h5A5A5A5AA5A5A5A5;
+defparam inst1.shared_arith = "off";
+
+// Location: LABCELL_X101_Y53_N42
+cyclone10gx_lcell_comb inst4(
+// Equation(s):
+// \inst4~combout  = ( \Cin~input_o  & ( (\B~input_o ) # (\A~input_o ) ) ) # ( !\Cin~input_o  & ( (\A~input_o  & \B~input_o ) ) )
+
+	.dataa(gnd),
+	.datab(!\A~input_o ),
+	.datac(!\B~input_o ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\Cin~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\inst4~combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+defparam inst4.extended_lut = "off";
+defparam inst4.lut_mask = 64'h030303033F3F3F3F;
+defparam inst4.shared_arith = "off";
+
+endmodule
